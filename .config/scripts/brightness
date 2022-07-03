@@ -1,0 +1,7 @@
+#!/usr/bin/env python3
+
+from subprocess import check_output
+raw_val = check_output(['brightnessctl', 'g'])
+val = int(raw_val.decode('utf-8'))
+percentage = round(val / 2.55)
+print(f' {percentage}%')

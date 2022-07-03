@@ -1,0 +1,71 @@
+
+configuration {
+  display-drun: "Search:";
+  drun-display-format: "{name}";
+}
+
+@theme "/dev/null"
+
+* {
+    background-color:           #4b5162;
+    border-color:               #282c34;
+    text-color:                 #dcd7c9;
+    height:                     35px;
+    //font:                       "CPMono_v07 Light 13";
+    //prompt-font:                "CPMono_v07 Light 13";
+    prompt-background:          #383c4a;
+    prompt-foreground:          #dcd7c9;
+    prompt-padding:             8px;
+    selected-normal-background: #a27b5c;
+    selected-normal-foreground: #dcd7c9;
+    border: 0;
+    margin: 0;
+    spacing: 0;
+}
+#window {
+    anchor: north;
+    location: north;
+    width: 100%;
+    padding: 0px;
+    children: [ horibox ];
+}
+#horibox {
+    orientation: horizontal;
+    children: [ prompt, entry, listview ];
+}
+#prompt {
+    padding:          @prompt-padding;
+    background-color: @prompt-background;
+    text-color:       @prompt-foreground;
+    font:             @prompt-font;
+}
+#listview {
+    layout: horizontal;
+    lines: 100;
+}
+#entry {
+    padding: 8px;
+    expand: false;
+    width: 10em;
+}
+#element {
+    padding: 8px 10px;
+    text-color: #787c99;
+}
+#element selected {
+    text-color:       @selected-normal-foreground;
+}
+
+element-text {
+    background-color: inherit;
+    text-color:       inherit;
+}
+
+/* Not actually relevant for this configuration, but it might
+be useful to someone having issues with their icons' background color
+
+element-icon {
+    background-color: inherit;
+}
+*/
+
