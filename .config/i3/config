@@ -10,7 +10,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
-set $jump space
+floating_modifier $mod
 
 #################################
 ####### config for gaps #########
@@ -108,13 +108,43 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 
 # change volume or toggle mute
-bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 1%+ && pkill -RTMIN+1 i3blocks
-bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 1%- && pkill -RTMIN+1 i3blocks
-bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 1%+ \
+&& pkill -RTMIN+1 i3blocks
+bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 1%- \
+&& pkill -RTMIN+1 i3blocks
+bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle \
+&& pkill -RTMIN+1 i3blocks
 
 # change display brightness
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5% && pkill -RTMIN+2 i3blocks
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%- && pkill -RTMIN+2 i3blocks
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5% \
+&& pkill -RTMIN+2 i3blocks
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%- \
+&& pkill -RTMIN+2 i3blocks
+
+##################
+#---Scratchpad---#
+##################
+
+# Dropdown terminal 
+for_window [instance="dropdown"] floating enable
+for_window [instance="dropdown"] move scratchpad
+exec_always --no-startup-id alacritty --class dropdown
+
+# Dropdown ranger in terminal
+for_window [instance="filebrowser"] floating enable
+for_window [instance="filebrowser"] move scratchpad
+exec_always --no-startup-id alacritty --class filebrowser --command ranger 
+
+# Dropdown kalker in terminal
+for_window [instance="kalk"] floating enable
+for_window [instance="kalk"] move scratchpad
+for_window [instance="kalk"] resize set 625 400
+exec_always --no-startup-id alacritty --class kalk --command kalker 
+
+bindsym $mod+Shift+Return [instance="dropdown"] scratchpad show
+bindsym $mod+Shift+d [instance="filebrowser"] scratchpad show
+bindsym $mod+Shift+b [instance="kalk"] scratchpad show;\
+[instance="kalk"] move position center
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -276,7 +306,7 @@ client.urgent 		$ubgcolor 	$ubgcolor		$textcolor	$ubgcolor
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3blocks -c /home/matroskin/.config/i3blocks/i3blocks.conf 
+    status_command i3blocks -c /home/matroskin/.config/i3blocks/i3blocks.conf 
 
 	position top
 	height 35
@@ -302,3 +332,6 @@ exec blueman-applet
 
 # Numlock on
 exec_always --no-startup-id numlockx on
+
+# Layout
+exec setxkbmap -layout us,ru -option grp:alt_shift_toggle
