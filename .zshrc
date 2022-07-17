@@ -8,9 +8,17 @@ plugins=(
     zsh-autosuggestions
     zsh-syntax-highlighting
 )
+# Cheetsheet aliases with fzf 
+alias al="alias | fzf -m"
 
 # Git dotfiles alias
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
+
+# Google Drive 
+alias gdsyncin="rclone sync gdrive: ~/gdrive --progress"
+alias gdsync="rclone sync ~/gdrive gdrive: --progress"
+alias gdcpin="rclone copy gdrive: ~/gdrive --progress"
+alias gdcp="rclone copy ~/gdrive gdrive: --progress"
 
 # Often used commands
 alias v="vim"
