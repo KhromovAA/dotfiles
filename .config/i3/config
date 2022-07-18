@@ -121,6 +121,19 @@ bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5% \
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%- \
 && pkill -RTMIN+2 i3blocks
 
+set $mode_system System (s) suspend, (h) hibernate, (r) reboot, (p) shutdown
+mode "$mode_system" {
+    bindsym s exec --no-startup-id systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym p exec --no-startup-id systemctl poweroff, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Escape mode "$mode_system"
+
 ##################
 #---Scratchpad---#
 ##################
@@ -133,6 +146,7 @@ exec_always --no-startup-id alacritty --class dropdown
 # Dropdown ranger in terminal
 for_window [instance="filebrowser"] floating enable
 for_window [instance="filebrowser"] move scratchpad
+for_window [instance="filebrowser"] resize set 1250 800
 exec_always --no-startup-id alacritty --class filebrowser --command ranger 
 
 # Dropdown kalker in terminal
@@ -141,10 +155,25 @@ for_window [instance="kalk"] move scratchpad
 for_window [instance="kalk"] resize set 625 400
 exec_always --no-startup-id alacritty --class kalk --command kalker 
 
+# Dropdown translate tool in terminal
+for_window [instance="translate"] floating enable
+for_window [instance="translate"] move scratchpad
+for_window [instance="translate"] resize set 625 400
+exec_always --no-startup-id alacritty --class translate --command\
+trans -t en+ru  -show-languages n -show-original n -show-alternatives y -show-dictionary n -show-prompt-message n -indent 1 -hl ru -e google -I 
+
 bindsym $mod+Shift+Return [instance="dropdown"] scratchpad show
-bindsym $mod+Shift+d [instance="filebrowser"] scratchpad show
+
+bindsym $mod+Shift+d [instance="filebrowser"] scratchpad show;\
+[instance="filebrowser"] move position center
+
 bindsym $mod+Shift+b [instance="kalk"] scratchpad show;\
 [instance="kalk"] move position center
+
+bindsym $mod+Shift+t [instance="translate"] scratchpad show;\
+[instance="translate"] move position center
+# [instance="translate"] move position 1295 34
+
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -335,3 +364,6 @@ exec_always --no-startup-id numlockx on
 
 # Layout
 exec setxkbmap -layout us,ru -option grp:alt_shift_toggle
+
+# Automount
+exec udiskie
