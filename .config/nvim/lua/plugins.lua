@@ -62,4 +62,6 @@ require("packer").startup(function()
   use "navarasu/onedark.nvim"
   --rust
   use "Saecki/crates.nvim"
+  --latex
+
 end)

@@ -1,0 +1,19 @@
+#!/bin/bash
+inputFile="$( echo $1 | sed 's!~!\/home\/matroskin!')"
+[ -z "$inputFile" ] && exit
+dir=$(dirname "$inputFile")
+
+case "$inputFile" in 
+
+	*tex)
+		cd "$dir"
+        pdflatex "$inputFile"
+		latexmk -c "$inputFile" > /dev/null
+		;;
+	
+	*md)
+		cd "$dir"	
+        pandoc "$inputFile" -o $(echo "$inputFile" | sed "s/md$/pdf/")
+        ;;
+
+esac

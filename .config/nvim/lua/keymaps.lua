@@ -51,6 +51,10 @@ map("t", "jj", "<C-\\><C-n>", { noremap = true })
 map("i", "jk", "<Esc>", { noremap = true })
 map("t", "jk", "<C-\\><C-n>", { noremap = true })
 
+map("n", "<leader>s", ":! compiler %:p > /dev/null <CR><CR>", default_opts)
+map("n", "<leader>o", ":! zathura %:p:r.pdf > /dev/null & disown<CR><CR>",
+default_opts)
+
 map("", "<up>", ':echoe "Use k"<CR>', { noremap = true, silent = false })
 map("", "<down>", ':echoe "Use j"<CR>', { noremap = true, silent = false })
 map("", "<left>", ':echoe "Use h"<CR>', { noremap = true, silent = false })
