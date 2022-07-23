@@ -1,14 +1,15 @@
 
+@theme "~/.local/share/rofi/themes/rounded-gray-dark.rasi"
+
 configuration {
   display-drun: "Applications:";
   display-window: "Windows:";
   drun-display-format: "{name}";
-  font: "CPMono_v07 Lught 13";
+  font: "Calibri\ 13";
   modi: "window,run,drun";
   show-icons: true;
 }
 
-@theme "/dev/null"
 
 * {
   bg: #383c4a66;
@@ -17,7 +18,6 @@ configuration {
   fg: #FFFFFF;
   fg-alt: #787c99;
 
-  background-color: @bg;
   
   border: 0;
   margin: 0;
@@ -30,52 +30,52 @@ window {
   width: 45%;
 }
 
-element {
+/*element {
   padding: 8 0;
   text-color: @fg-alt;
-}
+/*}
 
-element selected {
+/*element selected {
   text-color: @fg;
-}
+/*}
 
-element-text {
+/*element-text {
   background-color: inherit;
   text-color: inherit;
   vertical-align: 0.5;
-}
+/*}
 
 element-icon {
   size: 30;
 }
 
-entry {
+//entry {
   background-color: @bg-alt;
   padding: 12;
   text-color: @fg;
-}
+//}
 
-inputbar {
+//inputbar {
   children: [prompt, entry];
-}
+//}
 
-listview {
+//listview {
   padding: 8 12;
   background-color: @bg;
   columns: 1;
   lines: 8;
-}
+//}
 
-mainbox {
+//mainbox {
   background-color: @bg;
   children: [inputbar, listview];
-}
+//}
 
-prompt {
+//prompt {
   background-color: @bg-alt;
   enabled: true;
   padding: 12 0 0 12;
   text-color: @fg;
-}
+//}
 
 /* vim: ft=sass

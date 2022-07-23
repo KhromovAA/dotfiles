@@ -90,7 +90,7 @@ font pango:CPMono_v07 Plain 14
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
+# font pango:DejaVu Sans Mono 8
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -159,8 +159,7 @@ exec_always --no-startup-id alacritty --class kalk --command kalker
 for_window [instance="translate"] floating enable
 for_window [instance="translate"] move scratchpad
 for_window [instance="translate"] resize set 625 400
-exec_always --no-startup-id alacritty --class translate --command\
-trans -t en+ru  -show-languages n -show-original n -show-alternatives y -show-dictionary n -show-prompt-message n -indent 1 -hl ru -e google -I 
+exec_always --no-startup-id alacritty --class translate --command trans -t en+ru  -show-languages n -show-original n -show-alternatives y -show-dictionary n -show-prompt-message n -indent 1 -hl ru -e google -I 
 
 bindsym $mod+Shift+Return [instance="dropdown"] scratchpad show
 
@@ -319,11 +318,11 @@ for_window [class="TelegramDesktop"] move to workspace $wsTelegram
 for_window [class="VK"] move to workspace $wsTelegram
 
 # Colors variables
-set $bgcolor	#4b5162 
-set $ibgcolor	#383c4a
-set $acolor 	#7F8487
-set $textcolor 	#dcd7c9
-set $ubgcolor 	#a27b5c
+set $bgcolor	#7c8377 
+set $ibgcolor	#2b3339
+set $acolor 	#7c8377
+set $textcolor 	#d5c9ab
+set $ubgcolor 	#e69875
 
 #			#border		background		text		indicator
 client.focused 		$acolor 	$acolor			$textcolor	$acolor 
@@ -351,7 +350,7 @@ bar {
 }
 
 # Dislpay wallpaper
-exec_always feh --bg-fill ~/Pictures/Wallpapers/wallpaper.jpg
+exec_always feh --bg-fill ~/Pictures/Wallpapers/wallpapershq_forest-path_60.jpg
 
 # Picom
 exec picom --experimental-backends 

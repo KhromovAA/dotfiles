@@ -20,6 +20,9 @@ alias gdsync="rclone sync ~/gdrive gdrive: --progress"
 alias gdcpin="rclone copy gdrive: ~/gdrive --progress"
 alias gdcp="rclone copy ~/gdrive gdrive: --progress"
 
+# Translate tool
+alias tr="trans -t en+ru  -show-languages n -show-original n -show-alternatives y -show-dictionary n -show-prompt-message n -indent 1 -hl ru -e google -I"
+
 # Often used commands
 alias v="vim"
 alias vv="nvim"
