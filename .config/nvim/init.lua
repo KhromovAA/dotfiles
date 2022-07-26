@@ -1,4 +1,9 @@
-require "keymaps"
-require "plugins"
-require "settings"
-
+require("conf.keymaps")
+require("conf.plugins")
+require("conf.settings")
+require("conf.nvimtree")
+require("conf.bufferline")
+require("conf.format")
+require("conf.telescope")
+require("conf.theme")
+require("conf.options")
