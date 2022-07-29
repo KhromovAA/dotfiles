@@ -32,6 +32,7 @@ require("packer").startup(function()
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
 	})
+	use("nvim-treesitter/playground")
 	--icons
 	use("kyazdani42/nvim-web-devicons")
 	--motion

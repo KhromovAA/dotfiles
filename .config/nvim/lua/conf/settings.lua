@@ -1,11 +1,10 @@
 ---@diagnostic disable: undefined-global
 local cmd = vim.cmd
-local exec = vim.api.nvim_exec
+-- local exec = vim.api.nvim_exec
 local g = vim.g
-local opt = vim.opt
+-- local opt = vim.opt
 --vim
 g.mapleader = " "
--- g.onedark_color_overrides = {"background": {"gui": "#2F343F", "cterm": "235", "cterm16": "0" },}
 --lsp
 local lsp_installer = require("nvim-lsp-installer")
 lsp_installer.on_server_ready(function(server)
@@ -95,13 +94,3 @@ require("autosave").setup({
 require("nvim-lastplace").setup({})
 
 require("gitsigns").setup({ numhl = true })
---theme
--- cmd([[
--- if (has("autocmd") && !has("gui_running"))
---   augroup colorset
---     autocmd!
---     let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16" : "7" }
---     autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": s:white }) " `bg` will not be styled since there is no `bg` setting
---   augroup END
--- endif
--- ]])
