@@ -48,7 +48,8 @@ GetOptions("help|h" => \&help,
            "chip=s" => \$chip);
 
 # Get chip temperature
-open (SENSORS, "sensors -u $chip |") or die;
+
+open (SENSORS, "sensors -u $chip 1> /dev/stdout 2> /dev/null |") or die;
 while (<SENSORS>) {
     if (/^\s+temp1_input:\s+[\+]*([\-]*\d+\.\d)/) {
         $temperature = $1;
@@ -60,6 +61,7 @@ close(SENSORS);
 $temperature eq -9999 and die 'Cannot find temperature';
 
 # Print short_text, full_text
+
 print "$temperature°C\n" x2;
 
 # Print color, if needed

@@ -9,18 +9,22 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+
 set $mod Mod4
 floating_modifier $mod
 
 #################################
 ####### config for gaps #########
 
+border_radius 2
 # Disable window titlebars entirely
 for_window [class="^.*"] border pixel 4
 
 # Set inner/outer gaps
 gaps inner 7
 gaps outer 3
+
+bindsym $mod+Mod1+m exec --no-startup-id buckletoggle
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
 # gaps inner|outer current|all set|plus|minus <px>
@@ -269,7 +273,7 @@ bindsym $mod+r mode "resize"
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $wsFirefox "1 "
+set $wsFirefox "1"
 set $ws2 "2"
 set $ws3 "3"
 set $ws4 "4"
@@ -330,39 +334,41 @@ client.unfocused 	$ibgclolor 	$ibgcolor		$textcolor	$ibgcolor
 client.focused_inactive $ibgclolor 	$ibgcolor		$textcolor	$ibgcolor
 client.urgent 		$ubgcolor 	$ubgcolor		$textcolor	$ubgcolor
 
+exec_always ~/.config/polybar/launch
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-    status_command i3blocks -c /home/matroskin/.config/i3blocks/i3blocks.conf 
+    tray_output none
+    # status_command i3blocks -c /home/matroskin/.config/i3blocks/i3blocks.conf 
 
 	position top
-	height 35
+	height 33
 	workspace_min_width 30
 
-	colors{
-		background $ibgcolor
-		#			border 		background	text
-		focused_workspace 	$bgcolor	$bgcolor	$textcolor
-		inactive_workspace 	$ibgcolor	$ibgcolor	$textcolor
-		urgent_workspace 	$ubgcolor	$ubgcolor	$textcolor
-	}
+	# colors{
+	# 	background $ibgcolor
+	# 	#			border 		background	text
+	# 	focused_workspace 	$bgcolor	$bgcolor	$textcolor
+	# 	inactive_workspace 	$ibgcolor	$ibgcolor	$textcolor
+	# 	urgent_workspace 	$ubgcolor	$ubgcolor	$textcolor
+	# }
 }
 
 # Dislpay wallpaper
 exec_always feh --bg-fill ~/Pictures/Wallpapers/wallpapershq_forest-path_60.jpg
 
 # Picom
-exec picom --experimental-backends 
+exec_always picom --experimental-backends 
 
 # Blueman start
 exec blueman-applet
 
 # Numlock on
-exec_always --no-startup-id numlockx on
+# exec_always --no-startup-id numlockx on
 
 # Layout
 exec setxkbmap -layout us,ru -option grp:alt_shift_toggle
 
 # Automount
-exec udiskie
+# exec udiskie
