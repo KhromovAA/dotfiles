@@ -17,6 +17,7 @@ set formatoptions=
 set cursorline
 set splitbelow
 set splitright
+set termguicolors
 
 
 colorscheme onedark
