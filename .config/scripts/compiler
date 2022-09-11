@@ -16,4 +16,15 @@ case "$inputFile" in
         pandoc "$inputFile" -o $(echo "$inputFile" | sed "s/md$/pdf/")
         ;;
 
+	*cpp)
+		cd "$dir"	
+        g++ -o $(echo "$inputFile" | sed "s/.cpp$//") "$inputFile" 
+        alacritty --class term --hold --command  $(echo "$inputFile" | sed "s/.cpp$//")
+        ;;
+
+    *py)
+		cd "$dir"	
+        alacritty --class term --hold --command  python "$inputFile"
+        ;;
+
 esac

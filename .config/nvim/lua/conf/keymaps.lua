@@ -60,6 +60,8 @@ end
 
 map({ "<F1>", ":h ", silent = false })
 
+map({ "<leader>e", "<Cmd>sp <CR><Cmd>term python %<CR>" })
+
 --git
 map({ "<leader>[", "<Cmd>Gitsigns prev_hunk<CR>" })
 map({ "<leader>]", "<Cmd>Gitsigns next_hunk<CR>" })
