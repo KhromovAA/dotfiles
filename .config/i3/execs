@@ -1,0 +1,58 @@
+# i3 config file (v4)
+
+# Polybar
+exec ~/.config/polybar/launch
+
+# Dislpay wallpaper
+exec_always feh --bg-fill ~/Pictures/Wallpapers/wallpapershq_forest-path_60.jpg
+
+# Picom
+exec_always picom --experimental-backends 
+
+# Blueman start
+exec blueman-applet
+
+# Numlock on
+exec_always --no-startup-id numlockx on
+
+# Layout
+exec setxkbmap -layout us,ru -option grp:alt_shift_toggle
+
+# Automount
+exec udiskie
+
+##################
+#---Scratchpad---#
+##################
+
+# Dropdown terminal 
+for_window [instance="dropdown"] floating enable
+for_window [instance="dropdown"] move scratchpad
+exec_always --no-startup-id alacritty --class dropdown
+
+# Programm terminal 
+for_window [instance="term"] floating enable
+
+# Dropdown ranger in terminal
+for_window [instance="filebrowser"] floating enable
+for_window [instance="filebrowser"] move scratchpad
+for_window [instance="filebrowser"] resize set 1250 800
+exec_always --no-startup-id alacritty --class filebrowser --command ranger
+
+# Dropdown kalker in terminal
+for_window [instance="kalk"] floating enable
+for_window [instance="kalk"] move scratchpad
+for_window [instance="kalk"] resize set 625 400
+exec_always --no-startup-id alacritty --class kalk --command kalker
+
+# Dropdown translate tool in terminal
+for_window [instance="translate"] floating enable
+for_window [instance="translate"] move scratchpad
+for_window [instance="translate"] resize set 625 400
+exec_always --no-startup-id alacritty --class translate --command trans -t en+ru  -show-languages n -show-original n -show-alternatives y -show-dictionary n -show-prompt-message n -indent 1 -hl ru -e google -I
+
+
+# Some default executions
+exec --no-startup-id dex --autostart --environment i3
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id nm-applet
